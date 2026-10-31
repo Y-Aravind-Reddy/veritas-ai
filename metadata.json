@@ -1,0 +1,8 @@
+{
+  "name": "VERITAS AI - Enterprise Fact-Checking & Cognitive Investigation Platform",
+  "description": "Agentic fact-checking and misinformation intelligence platform powered by Gemini with search grounding, Plan-Act-Observe-Replan loops, and human-in-the-loop review.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
