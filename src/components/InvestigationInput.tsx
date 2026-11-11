@@ -67,7 +67,7 @@ export const InvestigationInput: React.FC<InvestigationInputProps> = ({ onSubmit
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!text.trim() || isLoading) return;
+    if (text.trim().length < 20 || text.trim().length > 12000 || isLoading) return;
     onSubmit({
       text: text.trim(),
       platform,
@@ -132,8 +132,10 @@ export const InvestigationInput: React.FC<InvestigationInputProps> = ({ onSubmit
             className="w-full bg-[#090d1a] border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all resize-y disabled:opacity-60"
           />
           <div className="flex items-center justify-between mt-1 text-[11px] text-slate-500">
-            <span>Minimum 15 characters for comprehensive claim extraction</span>
-            <span>{text.length} characters</span>
+            <span>Minimum 20 characters (up to 12,000 characters) for claim extraction</span>
+            <span className={text.trim().length > 0 && text.trim().length < 20 ? "text-amber-400 font-medium" : ""}>
+              {text.length} / 12,000 characters {text.trim().length > 0 && text.trim().length < 20 && `(need ${20 - text.trim().length} more)`}
+            </span>
           </div>
         </div>
 
@@ -210,9 +212,9 @@ export const InvestigationInput: React.FC<InvestigationInputProps> = ({ onSubmit
 
           <button
             type="submit"
-            disabled={!text.trim() || isLoading}
+            disabled={text.trim().length < 20 || text.trim().length > 12000 || isLoading}
             className={`inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl font-medium text-sm transition-all shadow-lg ${
-              !text.trim() || isLoading
+              text.trim().length < 20 || text.trim().length > 12000 || isLoading
                 ? 'bg-slate-800 text-slate-500 border border-slate-700 cursor-not-allowed'
                 : 'bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white shadow-indigo-600/30 hover:shadow-cyan-500/20 active:scale-[0.98]'
             }`}

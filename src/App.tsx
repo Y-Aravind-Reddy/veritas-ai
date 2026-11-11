@@ -40,7 +40,7 @@ import {
 } from 'lucide-react';
 
 function VeritasAppContent() {
-  const { profile } = useAuth();
+  const { profile, session } = useAuth();
   const [activeTab, setActiveTab] = useState<'workspace' | 'archive' | 'review' | 'evaluation' | 'agent' | 'evidence' | 'verdict'>('workspace');
   const [reports, setReports] = useState<InvestigationReport[]>([]);
   const [currentReport, setCurrentReport] = useState<InvestigationReport | null>(null);
@@ -257,6 +257,43 @@ function VeritasAppContent() {
     }>;
   }) => {
     if (!currentReport) return;
+
+    const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const isSupabaseId = uuidPattern.test(currentReport.id);
+
+    // If Supabase is active, user is authenticated, and report is a Supabase UUID
+    if (isSupabaseConfigured && isSupabaseId && session) {
+      try {
+        const { data: edgeResult, error: edgeError } = await supabase.functions.invoke('submit-editorial-review', {
+          body: {
+            investigation_id: currentReport.id,
+            decision: reviewData.decision,
+            decision_notes: reviewData.decisionNotes,
+            claim_reviews: reviewData.claimReviews.filter((cr) => !!cr.overrideVerdict),
+          },
+        });
+
+        if (edgeError) {
+          throw new Error(edgeError.message || 'Edge function review failed');
+        }
+
+        if (edgeResult?.success) {
+          const freshReport = await fetchSupabaseInvestigation(currentReport.id);
+          if (freshReport) {
+            setCurrentReport(freshReport);
+            setReports((prev) =>
+              prev.map((r) => (r.id === freshReport.id ? freshReport : r))
+            );
+          }
+          showNotification('Editorial sign-off recorded and certified via Supabase Edge Function.');
+          return;
+        }
+      } catch (sbErr: any) {
+        console.warn('Supabase edge review failed, using server fallback:', sbErr);
+      }
+    }
+
+    // Local / server API fallback (supports mock IDs, demo personas, local SQLite/memory store)
     try {
       const res = await fetch(`/api/reports/${currentReport.id}/review`, {
         method: 'POST',
@@ -272,7 +309,7 @@ function VeritasAppContent() {
         setReports((prev) =>
           prev.map((r) => (r.id === data.data.id ? data.data : r))
         );
-        showNotification('Editorial sign-off recorded and certified in Supabase audit table.');
+        showNotification('Editorial sign-off recorded and certified in audit table.');
       }
     } catch (err) {
       console.error('Failed to submit review:', err);

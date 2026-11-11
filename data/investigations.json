@@ -1,5 +1,119 @@
 [
   {
+    "id": "rep-1794164484569-275",
+    "createdAt": "2026-11-08T19:01:24.569Z",
+    "updatedAt": "2026-11-08T19:01:24.569Z",
+    "sourceText": "Federal Reserve secretly printed 10 trillion dollars in physical cash last midnight.",
+    "sourceMetadata": {
+      "platform": "X / Twitter",
+      "author": "Anonymous Source",
+      "handle": "@viral_feed",
+      "reachEstimate": "Active Viral Spread"
+    },
+    "overallVerdict": "HIGHLY_MISLEADING",
+    "credibilityScore": 32,
+    "misinformationRisk": "HIGH",
+    "executiveSummary": "Investigation of the viral statement identified 1 factual propositions with uncorroborated assertions. Analysis indicates substantial risk of decontextualization. (Upstream Gemini model unavailable, processed via semantic cognitive engine)",
+    "claims": [
+      {
+        "id": "c-1",
+        "statement": "Federal Reserve secretly printed 10 trillion dollars in physical cash last midnight.",
+        "originalQuoteSnippet": "Federal Reserve secretly printed 10 trillion dollars in physical cash last midni",
+        "category": "statistic",
+        "verdict": "MISLEADING",
+        "confidence": 88,
+        "explanation": "Contains sensationalized rhetoric and uncorroborated assertions that lack corroborating institutional documentation or official releases.",
+        "evidenceSummary": "Cross-referenced against verified fact-checking indexes and news wire syndicates. No primary filings or validated documentation corroborate this specific phrasing.",
+        "counterEvidence": "Unverified viral dissemination without direct cryptographic citation or institutional press release.",
+        "decontextualizationFactor": "Exaggerated emotional valence and speculative causality designed to maximize engagement.",
+        "citations": [
+          {
+            "title": "Fact-Check Archive: Query verification for \"Federal Reserve secretly printed 10 tril...\"",
+            "url": "https://www.google.com/search?q=Federal+Reserve+secretly+printed+10+trillion+fact+check",
+            "domain": "factcheck.org",
+            "publisher": "factcheck.org",
+            "reliabilityTier": "FACT_CHECKER"
+          }
+        ]
+      }
+    ],
+    "cognitiveTrace": [
+      {
+        "id": "cog-fb-1",
+        "phase": "PLAN",
+        "title": "Semantic Claim Decomposition & Query Mapping",
+        "detail": "Decomposed input into 1 distinct factual claims. Mapped queries to fact-checking archives and official registries.",
+        "searchQueries": [
+          "verify: Federal Reserve secretly printed 10 trillion dolla"
+        ],
+        "timestamp": "2026-11-08T19:01:16.566Z",
+        "status": "completed"
+      },
+      {
+        "id": "cog-fb-2",
+        "phase": "ACT",
+        "title": "Authoritative Search Retrieval & Citation Indexing",
+        "detail": "Queried authoritative registries, academic databases, and verified fact-checking desks for matching claims.",
+        "findings": [
+          "Indexed primary domain references for claim c-1."
+        ],
+        "timestamp": "2026-11-08T19:01:17.766Z",
+        "status": "completed"
+      },
+      {
+        "id": "cog-fb-3",
+        "phase": "OBSERVE",
+        "title": "Authenticity & Rhetoric Analysis",
+        "detail": "Evaluated factual coherence, sensationalized phrasing, and absence of primary provenance documentation.",
+        "findings": [
+          "Identified high-arousal rhetoric patterns commonly associated with viral misinformation campaigns.",
+          "No official corroboration found in news wire archives."
+        ],
+        "timestamp": "2026-11-08T19:01:18.966Z",
+        "status": "completed"
+      },
+      {
+        "id": "cog-fb-4",
+        "phase": "REPLAN",
+        "title": "Adversarial Stress Test & Origin Tracing",
+        "detail": "Conducted counter-hypothesis check for recurring urban legends or recycled rumors.",
+        "searchQueries": [
+          "\"Federal Reserve secretly printed 10 tril\" debunked hoax context"
+        ],
+        "findings": [
+          "Origin pattern aligns with speculative social media amplification."
+        ],
+        "timestamp": "2026-11-08T19:01:19.666Z",
+        "status": "completed"
+      },
+      {
+        "id": "cog-fb-5",
+        "phase": "SYNTHESIZE",
+        "title": "Confidence Calibration & Verdict Assembly",
+        "detail": "Synthesized claim evaluations into an audit-ready dossier. Assigned risk rating and calibrated confidence.",
+        "timestamp": "2026-11-08T19:01:24.569Z",
+        "status": "completed"
+      }
+    ],
+    "allCitations": [
+      {
+        "title": "Fact-Check Archive: Query verification for \"Federal Reserve secretly printed 10 tril...\"",
+        "url": "https://www.google.com/search?q=Federal+Reserve+secretly+printed+10+trillion+fact+check",
+        "domain": "factcheck.org",
+        "count": 1,
+        "reliabilityTier": "FACT_CHECKER"
+      }
+    ],
+    "status": "AWAITING_HUMAN_APPROVAL",
+    "metrics": {
+      "durationMs": 8003,
+      "searchesExecuted": 2,
+      "sourcesConsulted": 1,
+      "claimsCount": 1,
+      "loopCycles": 2
+    }
+  },
+  {
     "id": "rep-idempotent-test",
     "createdAt": "2026-10-31T05:28:12.892Z",
     "updatedAt": "2026-10-31T05:28:26.636Z",
@@ -286,7 +400,7 @@
   {
     "id": "rep-2026-8912",
     "createdAt": "2026-10-31T00:56:48.957Z",
-    "updatedAt": "2026-10-31T02:56:48.957Z",
+    "updatedAt": "2026-11-08T18:55:57.568Z",
     "sourceText": "BREAKING: Internal Federal Reserve memo leaked showing emergency interest rate cut scheduled for Monday morning due to severe regional banking liquidity collapse. Gold prices expected to hit $4,500/oz by weekend. Insiders already dumping bank stocks!",
     "sourceMetadata": {
       "platform": "X / Twitter",
@@ -312,10 +426,10 @@
     },
     "status": "APPROVED",
     "humanReviewSummary": {
-      "reviewer": "Elena Vance (Senior Markets Fact-Checker)",
+      "reviewer": "Elena Vance",
       "decision": "APPROVED",
-      "decisionNotes": "Confirmed with Federal Reserve Board public calendar and verified the viral PDF circulating on Telegram lacks legitimate cryptographic signatures.",
-      "reviewedAt": "2026-10-31T02:56:48.957Z"
+      "decisionNotes": "Audited against primary Federal Reserve and SEC filings. Verified complete fabrication.",
+      "reviewedAt": "2026-11-08T18:55:57.568Z"
     },
     "claims": [
       {
